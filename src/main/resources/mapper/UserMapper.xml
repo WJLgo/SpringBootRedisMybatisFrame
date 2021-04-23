@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hhu.springbootframe.mapper.UserMapper">
+<!--    在需要开启的二级缓存的statement的命名空间(namespace)中配置标签<cache></cache>-->
+    <cache type="com.hhu.springbootframe.config.MybatisRedisCache">
+        <property name="eviction" value="LRU" />
+        <property name="flushInterval" value="6000000" />
+        <property name="size" value="1024" />
+        <property name="readOnly" value="false" />
+    </cache>
+    <select id="listUserInfo" resultType="com.hhu.springbootframe.entity.User">
+    select *
+        from t_user
+
+    </select>
+</mapper>
